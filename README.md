@@ -6,6 +6,26 @@ A starter kit for non-developers using Claude Code to build software safely and 
 
 ---
 
+## 這是什麼？
+
+當你要開始用 Claude Code 開發程式的時候，有一些重要的事情需要注意：
+
+- 🔐 **密鑰安全**：不小心把 API Key 上傳到 GitHub，可能隔天就收到天價帳單
+- 🧪 **測試習慣**：AI 寫的程式看起來能跑，不代表真的正確
+- 📝 **版本控制**：沒有存檔習慣，改壞了就回不去了
+- ⚠️ **錯誤處理**：程式出錯但沒提示，根本不知道問題在哪
+
+**但問題是：初學者通常不知道這些事情。**
+
+這個專案的目的，就是**把這些注意事項預先告訴 Claude Code**，讓它在幫你寫程式的時候，自動遵守這些最佳實踐。
+
+你只需要把我們提供的 `CLAUDE.md` 放到專案裡，Claude Code 就會自動：
+- 幫你建立安全的開發環境
+- 在開發過程中持續遵守這些規則
+- 用白話解釋它寫的每一段程式
+
+---
+
 ## What's Inside
 
 | File | Purpose | Audience |
