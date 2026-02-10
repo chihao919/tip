@@ -13,6 +13,40 @@ A starter kit for non-developers using Claude Code to build software safely and 
 | [guide-for-beginners.md](./guide-for-beginners.md) | Plain-language guide explaining what to watch out for when using AI to code | Complete beginners (non-developers) |
 | [CLAUDE.md](./CLAUDE.md) | Drop-in config file that auto-bootstraps a safe Claude Code environment | Anyone using Claude Code |
 
+## 安裝方式 (Installation)
+
+### 方法一：讓 Claude Code 幫你安裝（推薦給初學者）
+
+如果你已經安裝了 Claude Code，只要在終端機輸入以下指令：
+
+```bash
+claude
+```
+
+然後對 Claude 說：
+
+> 請幫我從 https://github.com/chihao919/tip 下載 CLAUDE.md 和 guide-for-beginners.md 到我的專案根目錄
+
+Claude 會自動幫你下載並設定好一切。
+
+### 方法二：手動下載
+
+1. 點擊上方的綠色 **Code** 按鈕
+2. 選擇 **Download ZIP**
+3. 解壓縮後，把 `CLAUDE.md` 複製到你的專案根目錄
+
+### 方法三：使用 Git Clone
+
+```bash
+# 複製整個專案
+git clone https://github.com/chihao919/tip.git
+
+# 或者只下載 CLAUDE.md 到當前目錄
+curl -O https://raw.githubusercontent.com/chihao919/tip/master/CLAUDE.md
+```
+
+---
+
 ## Quick Start
 
 ### For beginners: Read the guide first
