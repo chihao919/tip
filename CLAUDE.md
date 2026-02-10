@@ -84,14 +84,45 @@ API_KEY=your_api_key_here
 DATABASE_URL=your_database_url_here
 ```
 
-### Step 1.5: Verify Security Setup
+### Step 1.5: Complete Environment Check & Report
 
-After completing all steps, verify:
-1. `.env` is listed in `.gitignore`
-2. `.claude/settings.json` exists with deny rules for sensitive commands
-3. No secrets exist in any tracked files (`git status` and review staged files)
+After completing all setup steps, **immediately run a full environment check** and report the results to the user.
 
-Report the setup results to the user.
+#### Checklist to verify:
+
+| Item | Check | Expected |
+|------|-------|----------|
+| `.gitignore` exists | File present? | ✅ Yes |
+| `.env` in `.gitignore` | Contains `.env`? | ✅ Yes |
+| `.claude/settings.json` | File present with deny rules? | ✅ Yes |
+| No hardcoded secrets | Scan all files for API keys, tokens, passwords | ✅ Clean |
+| Git initialized | `.git` folder exists? | ✅ Yes (or N/A for new projects) |
+| No secrets in git history | Check staged/committed files | ✅ Clean |
+
+#### How to check for secrets:
+
+```bash
+# Scan all files for common secret patterns
+grep -rE "(sk-|pk-|pat-|api_key|apikey|secret|password|token|Bearer|AKIA)" --include="*.js" --include="*.ts" --include="*.py" --include="*.json" --include="*.env*" . 2>/dev/null || echo "Clean"
+```
+
+#### Report format:
+
+After checking, present the results to the user in this format:
+
+```
+✅ 環境檢查完成！
+
+檢查項目：
+  ✅ .gitignore 已建立，包含 .env
+  ✅ .claude/settings.json 已建立，包含安全規則
+  ✅ 未發現硬編碼的密鑰
+  ✅ Git 環境正常
+
+🎉 你的開發環境已經設定完成，可以安全地開始開發了！
+```
+
+If any item fails, clearly explain what's wrong and how to fix it.
 
 ---
 
