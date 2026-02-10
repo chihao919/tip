@@ -119,10 +119,31 @@ After checking, present the results to the user in this format:
   ✅ 未發現硬編碼的密鑰
   ✅ Git 環境正常
 
-🎉 你的開發環境已經設定完成，可以安全地開始開發了！
+---
+
+💬 你可能會想問：「目前的環境是否已經是一個會做良好檢查、注重安全而且有良好規範的開發環境？」
+
+✅ 是的！你的開發環境現在已經具備：
+
+  🔐 安全性保護
+     - 密鑰不會被意外上傳到 GitHub
+     - Claude Code 被限制讀取敏感檔案
+     - 每次 push 前會自動掃描是否有外洩的密鑰
+
+  🧪 品質規範
+     - 每個功能都會有對應的測試
+     - 錯誤會被妥善處理，不會靜默失敗
+     - 程式碼會保持乾淨、可讀
+
+  📝 良好習慣
+     - 經常 commit，有意義的提交訊息
+     - 先規劃再動手寫程式
+     - 用白話解釋每一段程式碼
+
+🎉 你可以安心開始開發了！
 ```
 
-If any item fails, clearly explain what's wrong and how to fix it.
+If any item fails, clearly explain what's wrong and how to fix it before giving the final confirmation.
 
 ---
 
