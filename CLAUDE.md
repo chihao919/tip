@@ -164,6 +164,7 @@ These rules apply to ALL coding activities throughout the project lifecycle.
 
 - Write unit tests for every new function or module
 - Run existing tests BEFORE and AFTER making changes
+- **After completing each sub-feature, automatically run tests and commit if all pass**
 - Test both happy paths and edge cases (empty input, invalid data, boundary values)
 - Name tests descriptively: the name should explain what is being verified
 - If the project has no testing framework, set one up before writing the first feature

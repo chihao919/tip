@@ -1,0 +1,250 @@
+# 討論歷程記錄
+
+> 這份文件記錄了本專案所有文件的設計決策過程，
+> 供 Claude Code 在後續修改時了解脈絡。
+
+---
+
+## 專案起源
+
+使用者 Steven 想為「程式小白」（完全不懂程式的人）製作一份
+使用 Claude Code 的入門指南，讓他們能安全、有效地用 AI 寫程式。
+
+目標受眾：完全不懂程式的人（不是有一點基礎的人）。
+語言：繁體中文。
+工具：Claude Code（不是 Cursor、Windsurf 等其他工具）。
+
+---
+
+## 文件架構與設計決策
+
+### 1. guide-for-beginners.md（入門指南）
+
+**用途：** 給人類讀的入門教學，用白話解釋程式開發的基本概念。
+
+**設計原則：**
+- 大量使用生活化比喻（例如：Git = 遊戲存檔、API Key = 家門鑰匙）
+- 不假設讀者有任何程式基礎
+- 重點放在「為什麼」而不是「怎麼做」（怎麼做由 AI 處理）
+
+**涵蓋主題：**
+- 密鑰安全（.env、.gitignore）
+- 單元測試的概念
+- 版本控制基礎（Git）
+- 錯誤處理
+- 依賴管理
+- 程式碼品質
+
+### 2. CLAUDE.md（Claude Code 自動執行規則）
+
+**用途：** 放在專案根目錄，Claude Code 啟動時自動讀取並遵循。
+
+**設計哲學：**
+- 小白不需要記住規則，AI 自動遵守
+- 包含 bootstrap 機制：首次使用時自動建立 .gitignore、.env.example 等
+- 規則寫得像是「給 AI 的行為準則」而不是「給人的教學」
+
+**重要規則包括：**
+- 永遠不要硬編碼敏感資訊
+- 每個新函式都要寫單元測試
+- 改動前後都要跑測試
+- **每完成一個子功能就自動跑測試，全部通過就自動 commit**（後來新增）
+- 用白話解釋產出的程式碼
+- 錯誤訊息要有意義，不能靜默失敗
+
+### 3. vibe-coding-survival-guide.md（Vibe Coding 生存指南）
+
+**用途：** 進階指南，教小白如何用正確的流程進行 AI 輔助開發。
+
+**這份文件的靈感來源：**
+- 10 本經典程式設計書籍（見下方「書籍篩選」段落）
+- Mosky 劉依語的 AI 寫程式教學理念
+- 2025 年 Vibe Coding 的產業現狀與教訓
+
+### 4. README.md
+
+標準 GitHub README，說明專案用途和檔案結構。
+
+### 5. LICENSE
+
+MIT 授權。
+
+---
+
+## 書籍篩選過程
+
+我們從 10 本公認最好的「寫出好程式」書籍出發，
+逐一分析每本書在 AI 時代下哪些知識仍然重要、哪些可以跳過。
+
+### 選定的 10 本書
+
+| # | 書名 | 作者 |
+|---|------|------|
+| 1 | Clean Code | Robert C. Martin |
+| 2 | The Pragmatic Programmer | Andrew Hunt & David Thomas |
+| 3 | Refactoring | Martin Fowler |
+| 4 | Code Complete | Steve McConnell |
+| 5 | Design Patterns | Gang of Four |
+| 6 | A Philosophy of Software Design | John Ousterhout |
+| 7 | The Clean Coder | Robert C. Martin |
+| 8 | Working Effectively with Legacy Code | Michael Feathers |
+| 9 | Test-Driven Development: By Example | Kent Beck |
+| 10 | The Mythical Man-Month | Frederick Brooks |
+
+### AI 時代下的篩選邏輯
+
+**核心問題：** AI 已經能自動處理哪些事？人類仍需掌握哪些事？
+
+**AI 已經能處理的（可以大幅跳過）：**
+- 語法細節、格式化、命名慣例的具體規則
+- 23 個設計模式的記憶與實作
+- 手動重構的步驟
+- 程式碼建構的細節（變數宣告、迴圈結構等）
+- 手動撰寫測試的步驟
+
+**人類仍須掌握的（必須保留）：**
+- 安全性判斷（AI 約 50% 生成的程式碼有安全漏洞）
+- 測試驅動的思維（先有測試再寫功能）
+- 需求對齊（怎麼把模糊的想法變成清晰的計畫）
+- 複雜度控制（AI 傾向過度工程化）
+- 錯誤處理策略（AI 喜歡跳過邊界情況）
+- 專業態度（估時間、說不、面對壓力）
+- 軟體開發的本質不變（Brooks 定律至今適用）
+
+### 各書 AI 時代評分與取捨
+
+（完整表格在 vibe-coding-survival-guide.md 裡，以下是關鍵決策）
+
+**⭐⭐⭐⭐⭐ 幾乎整本都值得讀：**
+- A Philosophy of Software Design — 複雜度控制是 AI 時代最重要的技能
+- The Pragmatic Programmer — 思維方式、規劃、驗證的理念不過時
+- TDD: By Example — 測試先行的思維是 AI 時代唯一客觀品質指標
+
+**⭐⭐ 大部分可以跳過：**
+- Design Patterns — 理解「為什麼」有用，但不需要記憶 23 個模式（AI 會自己用）
+
+---
+
+## Vibe Coding 生存指南的演化過程
+
+### 第一版：8 個步驟
+
+最初的工作流程有 8 個步驟，包含獨立的「定義需求」和「規劃」步驟。
+
+### 第二版：加入 Plan Mode 和 Mosky 的提問技巧
+
+**研究了以下資料後進行重大改版：**
+
+1. **Mosky 劉依語**（台灣 AI 寫程式教育者）
+   - 前 Pinkoi 資深後端工程師/架構師，20 年經驗
+   - 核心理念：讓 AI 問你問題（反向提示），而不是你努力寫完美的 prompt
+   - 課程：learn.mosky.tw/courses/ai-coding
+
+2. **Claude Code Plan Mode**
+   - 啟動：Shift+Tab 兩次（或 /plan 指令）
+   - 唯讀模式：AI 可以讀檔案、分析架構、問問題，但不能修改任何東西
+   - 好處：零風險、更快、更深入的分析
+   - Windows 問題（v2.1.3）：Plan Mode 可能不在循環中，改用 /plan 指令
+
+3. **2025 年 Vibe Coding 產業現狀**
+   - Andrej Karpathy 2025 年 2 月創造這個詞
+   - Y Combinator Winter 2025：25% 的新創有 95% AI 生成的程式碼
+   - 安全危機：約 50% 的 AI 程式碼有漏洞
+   - Lovable：1,645 個應用中有 170 個有資料外洩問題
+   - Replit agent 刪除了生產環境資料庫
+   - 產業轉向：「vibe coding」→「context engineering」
+
+### 第三版：合併步驟，從 8 步變成 6 步
+
+**合併原因：** Plan Mode 讓「定義需求」和「規劃」變成連續的過程，不需要分開。
+
+**移除安全設定步驟的原因：** CLAUDE.md 的 bootstrap 機制會自動處理。
+
+### 第四版（當前版本）：Mosky 風格的寫法改造
+
+**重大風格改變——受 Mosky 教學風格啟發：**
+
+Steven 指出文件寫得太「深硬」（像教科書），
+要求改成 Mosky 的風格：先做再說，做中學。
+
+**具體改動：**
+
+1. **Step 2（產生測試）的節奏改造：**
+   - 舊版：先解釋什麼是測試 → 然後教你怎麼做
+   - 新版：先叫 AI 做 → ☕ AI 在忙的時候順便解釋為什麼 → AI 做完了看結果
+   - 靈感：「在 AI 忙碌工作的時候，我們來解釋一下為什麼要做這個步驟」
+
+2. **Step 2 結尾加入自動化說明：**
+   - CLAUDE.md 已經設好規則，AI 會自動跑測試
+   - 小白不用自己記得跑，只要看結果是紅色還是綠色
+   - 也同步更新了 CLAUDE.md 加入對應規則
+
+3. **Step 3（寫功能）的觀念翻轉：**
+   - 舊版：教小白怎麼拆步驟、一塊一塊做
+   - 新版：Claude Code 本來就會自動拆步驟（官方文件確認），
+     小白只要「看著它做就好」
+   - 關鍵發現：拆得好不好取決於 Step 1 的計畫品質
+   - 所以真正決定成敗的是 Step 1，不是 Step 3
+
+4. **移除了小白看不懂的術語：**
+   - branch → 完全不提（對小白沒意義）
+   - commit → 「存檔」
+   - 只在必要時用 ☕ 小提示解釋概念
+
+### 尚未改到的部分
+
+Step 4（審核）、Step 5（重構）、Step 6（合併）
+還沒有用 Mosky 風格重寫，仍然是舊版的 └─ 格式。
+建議後續用同樣的風格改過。
+
+---
+
+## 技術細節備忘
+
+### Claude Code 的自動拆步驟行為
+
+- 官方文件確認：「For complex tasks, it breaks work into steps,
+  executes them, and adjusts based on what it learns.」
+- 這是 agentic loop 的核心行為，不需要特別設定
+- 但拆得好不好取決於 Plan Mode 裡給的計畫是否清楚
+- 新的 Tasks 系統（v2.1.16+）支援跨 session 的任務管理
+
+### Claude Code Hooks（自動化測試）
+
+- PostToolUse hook 可以在每次改完檔案後自動跑測試
+- 這是「保證版」的自動化（寫死的規則，AI 不可能忘）
+- 但設定對小白有門檻
+- 目前的做法是靠 CLAUDE.md 規則（簡單版），
+  Hooks 留給進階使用者
+
+### Plan Mode 技術細節
+
+- Shift+Tab 循環：Normal → Auto-accept → Plan → (Delegate)
+- 可用工具：read, ls, glob, grep, task, web_fetch, web_search
+- 不可用工具：edit, write, bash（所有修改工具都被封鎖）
+- 小專案（<30 分鐘）：Plan Mode 對話本身就是計畫
+- 大專案：建議產出 PLAN.md + ARCHITECTURE.md
+
+---
+
+## 寫作風格指引
+
+本專案的寫作風格受 Mosky 劉依語啟發，核心原則：
+
+1. **先做再說** — 先給一句話讓讀者動手，再解釋為什麼
+2. **利用等待時間** — AI 在跑的時候塞知識，不會感覺在「上課」
+3. **用 ☕ 標記解釋段落** — 讓想跳過的人可以跳過
+4. **用 💡 標記可選知識** — 想深入的人再看
+5. **用生活比喻** — IKEA 傢俱、樂高城堡、遊戲存檔
+6. **避免專業術語** — branch → 不提、commit → 存檔
+7. **用 🟢🔴 視覺化結果** — 測試通過/失敗一目瞭然
+8. **語氣像朋友聊天** — 不是老師上課
+
+---
+
+## 待辦事項
+
+- [ ] Step 4、5、6 用 Mosky 風格重寫
+- [ ] vibe-coding-survival-guide.md 加入 repo
+- [ ] 考慮是否需要把 Hooks 的進階設定寫成附錄
+- [ ] 考慮加入實際操作的螢幕截圖或 GIF
