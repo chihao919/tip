@@ -34,6 +34,7 @@ A starter kit for non-developers using Claude Code to build software safely and 
 | [vibe-coding-survival-guide.md](./vibe-coding-survival-guide.md) | Advanced guide: 6-step Vibe Coding workflow with Plan Mode | Beginners ready to start coding |
 | [CLAUDE.md](./CLAUDE.md) | Drop-in config file that auto-bootstraps a safe Claude Code environment | Anyone using Claude Code |
 | [DISCUSSION-HISTORY.md](./DISCUSSION-HISTORY.md) | Design decisions and evolution of this project | Contributors / Claude Code |
+| [INSTALL.md](./INSTALL.md) | Installation instructions for Claude Code to follow | Claude Code |
 
 ### Skills（Claude Code 技能）
 
@@ -44,58 +45,39 @@ A starter kit for non-developers using Claude Code to build software safely and 
 
 ## 安裝方式 (Installation)
 
-安裝分為兩部分：**Skills（一次性）** 和 **專案配置（每個專案）**。
+### 最簡單的方式：讓 Claude Code 幫你安裝（推薦）
 
-### Step 1：安裝 Skills（一次性）
+1. 開啟終端機，進入你的專案資料夾
+2. 啟動 Claude Code：
+   ```bash
+   claude
+   ```
+3. 對 Claude 說：
+   > 請幫我從 https://github.com/chihao919/tip 安裝開發工具包
 
-Skills 是 Claude Code 的技能擴充，安裝一次後所有專案都可以使用。
+Claude 會自動：
+- 下載並安裝技能（skills）
+- 設定專案環境（.gitignore、安全規則等）
+- 確認一切都準備好了
 
-**方法 A：讓 Claude Code 幫你安裝（推薦）**
+### 手動安裝
 
-```bash
-claude
-```
+如果你想手動安裝：
 
-然後對 Claude 說：
-
-> 請幫我從 https://github.com/chihao919/tip 下載 skills 資料夾裡的所有檔案，安裝到我的 Claude Code skills 目錄（~/.claude/skills/）
-
-**方法 B：手動安裝**
-
-1. 下載本專案（點擊綠色 Code 按鈕 → Download ZIP）
-2. 把 `skills/` 資料夾裡的檔案複製到：
-   - macOS/Linux: `~/.claude/skills/`
-   - Windows: `%USERPROFILE%\.claude\skills\`
-
-**安裝後你會有這些技能：**
-- `vibe-coding-workflow` — 6 步驟開發流程（Plan → Test → Implement → Review → Refactor → Merge）
-- `security-check` — 推送前自動掃描是否有洩漏的密鑰
-
-### Step 2：專案配置（每個新專案）
-
-每次開始新專案時，把 `CLAUDE.md` 放到專案根目錄：
-
-**方法 A：讓 Claude Code 幫你下載**
-
-```bash
-claude
-```
-
-然後對 Claude 說：
-
-> 請幫我從 https://github.com/chihao919/tip 下載 CLAUDE.md 到我的專案根目錄
-
-**方法 B：手動下載**
-
-```bash
-# 下載 CLAUDE.md 到當前目錄
-curl -O https://raw.githubusercontent.com/chihao919/tip/master/CLAUDE.md
-```
-
-**方法 C：Git Clone 整個專案**
-
+**Step 1：下載專案**
 ```bash
 git clone https://github.com/chihao919/tip.git
+```
+
+**Step 2：安裝 Skills（一次性）**
+```bash
+mkdir -p ~/.claude/skills
+cp tip/skills/*.md ~/.claude/skills/
+```
+
+**Step 3：複製 CLAUDE.md 到你的專案**
+```bash
+cp tip/CLAUDE.md your-project/
 ```
 
 ---
