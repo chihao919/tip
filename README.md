@@ -33,14 +33,24 @@ A starter kit for non-developers using Claude Code to build software safely and 
 | [guide-for-beginners.md](./guide-for-beginners.md) | Plain-language guide explaining what to watch out for when using AI to code | Complete beginners (non-developers) |
 | [vibe-coding-survival-guide.md](./vibe-coding-survival-guide.md) | Advanced guide: 6-step Vibe Coding workflow with Plan Mode | Beginners ready to start coding |
 | [CLAUDE.md](./CLAUDE.md) | Drop-in config file that auto-bootstraps a safe Claude Code environment | Anyone using Claude Code |
-| [vibe-coding-workflow.md](./vibe-coding-workflow.md) | Claude Code skill definition for the 6-step workflow (English, for AI) | Claude Code / Contributors |
 | [DISCUSSION-HISTORY.md](./DISCUSSION-HISTORY.md) | Design decisions and evolution of this project | Contributors / Claude Code |
+
+### Skills（Claude Code 技能）
+
+| File | Purpose |
+|------|---------|
+| [skills/vibe-coding-workflow.md](./skills/vibe-coding-workflow.md) | 6-step development workflow skill (Plan → Test → Implement → Review → Refactor → Merge) |
+| [skills/security-check.md](./skills/security-check.md) | Pre-push security scanner for detecting leaked secrets |
 
 ## 安裝方式 (Installation)
 
-### 方法一：讓 Claude Code 幫你安裝（推薦給初學者）
+安裝分為兩部分：**Skills（一次性）** 和 **專案配置（每個專案）**。
 
-如果你已經安裝了 Claude Code，只要在終端機輸入以下指令：
+### Step 1：安裝 Skills（一次性）
+
+Skills 是 Claude Code 的技能擴充，安裝一次後所有專案都可以使用。
+
+**方法 A：讓 Claude Code 幫你安裝（推薦）**
 
 ```bash
 claude
@@ -48,53 +58,86 @@ claude
 
 然後對 Claude 說：
 
-> 請幫我從 https://github.com/chihao919/tip 下載 CLAUDE.md 和 guide-for-beginners.md 到我的專案根目錄
+> 請幫我從 https://github.com/chihao919/tip 下載 skills 資料夾裡的所有檔案，安裝到我的 Claude Code skills 目錄（~/.claude/skills/）
 
-Claude 會自動幫你下載並設定好一切。
+**方法 B：手動安裝**
 
-### 方法二：手動下載
+1. 下載本專案（點擊綠色 Code 按鈕 → Download ZIP）
+2. 把 `skills/` 資料夾裡的檔案複製到：
+   - macOS/Linux: `~/.claude/skills/`
+   - Windows: `%USERPROFILE%\.claude\skills\`
 
-1. 點擊上方的綠色 **Code** 按鈕
-2. 選擇 **Download ZIP**
-3. 解壓縮後，把 `CLAUDE.md` 複製到你的專案根目錄
+**安裝後你會有這些技能：**
+- `vibe-coding-workflow` — 6 步驟開發流程（Plan → Test → Implement → Review → Refactor → Merge）
+- `security-check` — 推送前自動掃描是否有洩漏的密鑰
 
-### 方法三：使用 Git Clone
+### Step 2：專案配置（每個新專案）
+
+每次開始新專案時，把 `CLAUDE.md` 放到專案根目錄：
+
+**方法 A：讓 Claude Code 幫你下載**
 
 ```bash
-# 複製整個專案
-git clone https://github.com/chihao919/tip.git
+claude
+```
 
-# 或者只下載 CLAUDE.md 到當前目錄
+然後對 Claude 說：
+
+> 請幫我從 https://github.com/chihao919/tip 下載 CLAUDE.md 到我的專案根目錄
+
+**方法 B：手動下載**
+
+```bash
+# 下載 CLAUDE.md 到當前目錄
 curl -O https://raw.githubusercontent.com/chihao919/tip/master/CLAUDE.md
+```
+
+**方法 C：Git Clone 整個專案**
+
+```bash
+git clone https://github.com/chihao919/tip.git
 ```
 
 ---
 
 ## Quick Start
 
-### For beginners: Read the guide first
+### 1. 先閱讀入門指南
 
-Read [guide-for-beginners.md](./guide-for-beginners.md) to understand the key concepts:
-security, testing, version control, and how to work with AI effectively.
+閱讀 [guide-for-beginners.md](./guide-for-beginners.md) 了解基本概念：
+密鑰安全、測試、版本控制，以及如何有效地與 AI 合作。
 
-### For projects: Drop in CLAUDE.md
+### 2. 安裝 Skills + CLAUDE.md
 
-1. Copy `CLAUDE.md` to the root of your project
-2. Start Claude Code in that project
-3. Claude will ask: *"Do you want me to run all setup steps automatically, or list them for you to confirm one by one?"*
-4. Choose your preference and let Claude handle the rest
+按照上面的「安裝方式」完成：
+1. 安裝 skills（一次性）
+2. 把 CLAUDE.md 放到你的專案
 
-**What CLAUDE.md does automatically:**
-- 🔐 Creates `.claude/settings.json` with security deny rules
-- 📄 Creates `.gitignore` and `.env.example`
-- ✅ Verifies the entire security setup
+### 3. 開始開發！
 
-**What CLAUDE.md enforces as ongoing rules:**
-- Never hard-code secrets
-- Write tests for every feature
-- Handle errors properly
-- Plan before coding
-- Explain code in plain language
+Claude Code 啟動後會問你：*「要我自動執行所有設定步驟，還是逐一列出讓你確認？」*
+
+選擇你喜歡的方式，讓 Claude 處理剩下的事。
+
+---
+
+## 安裝後你會得到什麼？
+
+**CLAUDE.md 自動執行：**
+- 🔐 建立 `.claude/settings.json` 安全規則
+- 📄 建立 `.gitignore` 和 `.env.example`
+- ✅ 驗證整個安全設定
+
+**Skills 提供的能力：**
+- 📋 `vibe-coding-workflow` — 用 6 步驟流程開發功能
+- 🔒 `security-check` — 推送前自動檢查密鑰洩漏
+
+**持續遵守的規則：**
+- 永遠不硬編碼密鑰
+- 每個功能都寫測試
+- 正確處理錯誤
+- 先規劃再寫程式
+- 用白話解釋程式碼
 
 ## Why This Exists
 

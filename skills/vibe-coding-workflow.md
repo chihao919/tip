@@ -105,8 +105,8 @@ All tests pass. Now explain what you built.
    You tend to over-engineer. Actively look for code to delete.
 
 3. For security-related features (auth, payments, personal data):
-   Run a security review. Check for:
-   - Hardcoded secrets
+   Run the `security-check` skill to scan for:
+   - Hardcoded secrets (API keys, tokens, passwords)
    - Missing input validation
    - Improper access controls
    - SQL injection, XSS vulnerabilities
@@ -163,13 +163,16 @@ feature easier to build.
 
 ## Step 6: Merge
 
-1. Merge to main branch with a meaningful commit message
+1. Before pushing, run the `security-check` skill to scan for leaked secrets.
+   Only proceed if the security check passes.
+
+2. Merge to main branch with a meaningful commit message
    Format: `feat: <description>` or `fix: <description>`
 
-2. You just completed ONE feature from the plan.
+3. You just completed ONE feature from the plan.
    (Step 3's sub-steps were the internal pieces of that one feature.)
 
-3. Check what to do next:
+4. Check what to do next:
    - If PLAN.md exists: read it to find the next feature
    - If no PLAN.md: look back at the plan you produced in Step 1
    - If there are more features: go to Step 2 (no need to re-plan)
