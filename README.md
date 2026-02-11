@@ -33,7 +33,7 @@ A starter kit for non-developers using Claude Code to build software safely and 
 | [guide-for-beginners.md](./guide-for-beginners.md) | Plain-language guide explaining what to watch out for when using AI to code | Complete beginners (non-developers) |
 | [vibe-coding-survival-guide.md](./vibe-coding-survival-guide.md) | Advanced guide: 6-step Vibe Coding workflow with Plan Mode | Beginners ready to start coding |
 | [CLAUDE.md](./CLAUDE.md) | Drop-in config file that auto-bootstraps a safe Claude Code environment | Anyone using Claude Code |
-| [SKILL.md](./SKILL.md) | Claude Code skill definition for the 6-step workflow (English, for AI) | Claude Code / Contributors |
+| [vibe-coding-workflow.md](./vibe-coding-workflow.md) | Claude Code skill definition for the 6-step workflow (English, for AI) | Claude Code / Contributors |
 | [DISCUSSION-HISTORY.md](./DISCUSSION-HISTORY.md) | Design decisions and evolution of this project | Contributors / Claude Code |
 
 ## 安裝方式 (Installation)
