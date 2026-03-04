@@ -242,9 +242,89 @@ Step 4（審核）、Step 5（重構）、Step 6（合併）
 
 ---
 
+## 第五版：大規模增強（v2.0）
+
+### 完成的待辦事項
+
+- [x] Step 4、5、6 用 Mosky 風格重寫
+- [x] Hooks 進階設定寫成附錄（加在 vibe-coding-survival-guide.md 末尾）
+
+### 新增 3 個 Skills
+
+**設計決策：** 從 Jeffallan/claude-skills（66 個專業技能）中萃取適合個人初學者的部分，
+簡化後融入本專案的風格（繁體中文、白話、生活比喻）。
+
+1. **debugging-guide** — 系統化除錯指南
+   - 靈感來源：Debugging Wizard skill
+   - 簡化為 5 步除錯法：重現 → 隔離 → 假設並測試 → 修復 → 預防
+   - 用「看醫生」比喻貫穿全文
+   - 核心理念：禁止「隨機亂改看看」
+
+2. **code-review** — 自我程式碼審查
+   - 靈感來源：Code Reviewer skill
+   - 簡化為「自己 review 自己的 code」
+   - 5 點檢查清單 + 🔴🟡🟢 嚴重程度分類
+   - 只輸出建議，等使用者確認再修改
+
+3. **project-kickoff** — 專案快速啟動
+   - 靈感來源：Feature Forge + Architecture Designer
+   - 用 5 個問題引導使用者釐清需求
+   - 自動選擇技術棧並解釋原因
+   - 產出專案結構和 PLAN.md
+   - 與 vibe-coding-workflow 互補（kickoff = 整個專案初始化，workflow = 每個功能開發）
+
+### 安裝體驗改善
+
+1. **新增 install.sh 一鍵安裝腳本**
+   - `curl -fsSL ... | bash` 即可安裝
+   - 自動下載所有 skills、詢問是否複製 CLAUDE.md、顯示安裝報告
+   - 處理了非互動模式（pipe from curl）的情況
+
+2. **README.md 大改版**
+   - 加入 badges（License、Stars、Last Commit）
+   - 加入「為什麼需要這個？」的吸引人開場
+   - 加入「30 秒快速開始」段落
+   - Skills 表格包含所有 5 個技能的說明
+
+3. **INSTALL.md 更新**
+   - 加入一鍵安裝指令
+   - 加入更新已安裝 Skills 的方法
+   - 安裝完成報告包含所有 5 個技能
+
+### 內容補充
+
+1. **FAQ.md** — 9 個常見問題
+   - 方案費用、CLAUDE.md vs settings.json、版權、Plan Mode 等
+   - 用生活比喻解釋每個概念
+
+2. **troubleshooting.md** — 6 個常見故障排除
+   - CLAUDE.md 沒被讀到、Skills 不出現、測試失敗、push 被擋等
+   - 每個問題都有診斷步驟和解決方案
+
+3. **CLAUDE.md Section 2.8**
+   - 新增 Available Skills 段落
+   - 讓 Claude Code 知道有哪些技能可用
+
+### Step 4/5/6 的 Mosky 風格重寫
+
+**改動原則（與 Step 2/3 一致）：**
+- 先給一句話讓讀者動手 → ☕ AI 在忙的時候解釋為什麼 → 看結果
+- 用 🟢🔴 視覺化結果
+- 用生活比喻（外賣核對菜單、煮完大餐要洗碗、遊戲存檔點）
+- 語氣像朋友聊天
+
+### Hooks 附錄
+
+- 加在 vibe-coding-survival-guide.md 末尾
+- 用 💡 標記，讓想跳過的人可以跳
+- 解釋 CLAUDE.md 規則（AI 口頭約定）vs Hooks（寫死的自動化）的差別
+- 提供 Node.js 和 Python 兩種設定範例
+
+---
+
 ## 待辦事項
 
-- [ ] Step 4、5、6 用 Mosky 風格重寫
-- [ ] vibe-coding-survival-guide.md 加入 repo
-- [ ] 考慮是否需要把 Hooks 的進階設定寫成附錄
 - [ ] 考慮加入實際操作的螢幕截圖或 GIF
+- [ ] 考慮錄製安裝和使用的影片教學
+- [ ] 考慮加入更多 Skills（如 git-workflow、documentation-writer）
+- [ ] 考慮支援其他語言版本（英文、簡體中文）

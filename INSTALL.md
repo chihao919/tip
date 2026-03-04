@@ -15,7 +15,26 @@ When the user says things like:
 
 ---
 
-## Step 1: Install Skills (One-time setup)
+## 方法一：一鍵安裝（推薦）
+
+使用者可以直接執行以下指令：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/chihao919/tip/main/install.sh | bash
+```
+
+這會自動：
+- 下載所有 Skills 到 `~/.claude/skills/`
+- 詢問是否複製 CLAUDE.md 到當前專案
+- 顯示安裝結果報告
+
+---
+
+## 方法二：Claude Code 自動安裝
+
+如果使用者在 Claude Code 中請求安裝，按照以下步驟執行：
+
+### Step 1: Install Skills (One-time setup)
 
 Copy the skill files to the user's Claude Code skills directory:
 
@@ -32,11 +51,14 @@ After copying, confirm to the user:
 ✅ 已安裝以下技能：
   - vibe-coding-workflow（6 步驟開發流程）
   - security-check（推送前安全檢查）
+  - debugging-guide（系統化除錯指南）
+  - code-review（自我程式碼審查）
+  - project-kickoff（專案快速啟動）
 ```
 
 ---
 
-## Step 2: Copy CLAUDE.md to User's Project
+### Step 2: Copy CLAUDE.md to User's Project
 
 Copy `CLAUDE.md` to the user's current working directory (their project root):
 
@@ -51,11 +73,11 @@ cp CLAUDE.md ./
 
 ---
 
-## Step 3: Run Initial Setup
+### Step 3: Run Initial Setup
 
 Now execute the setup steps defined in CLAUDE.md Section 1:
 
-### 3.1 Create Security Configuration
+#### 3.1 Create Security Configuration
 
 If `.claude/settings.json` does not exist in the project, create it:
 
@@ -74,7 +96,7 @@ If `.claude/settings.json` does not exist in the project, create it:
 }
 ```
 
-### 3.2 Create .gitignore
+#### 3.2 Create .gitignore
 
 If `.gitignore` does not exist, create one with:
 
@@ -103,7 +125,7 @@ out/
 Thumbs.db
 ```
 
-### 3.3 Create .env.example (if project uses environment variables)
+#### 3.3 Create .env.example (if project uses environment variables)
 
 ```
 # Copy this file to .env and fill in your actual values
@@ -115,7 +137,7 @@ DATABASE_URL=your_database_url_here
 
 ---
 
-## Step 4: Verify and Report
+### Step 4: Verify and Report
 
 Run these checks:
 
@@ -131,6 +153,9 @@ Then report to the user in this format:
 已安裝的技能：
   ✅ vibe-coding-workflow（6 步驟開發流程）
   ✅ security-check（推送前安全檢查）
+  ✅ debugging-guide（系統化除錯指南）
+  ✅ code-review（自我程式碼審查）
+  ✅ project-kickoff（專案快速啟動）
 
 專案環境設定：
   ✅ .gitignore 已建立，包含 .env
@@ -147,7 +172,45 @@ Then report to the user in this format:
 我會自動用 6 步驟流程帶你完成：
 1. 規劃 → 2. 寫測試 → 3. 實作 → 4. 審查 → 5. 重構 → 6. 合併
 
-推送程式碼前，我會自動檢查有沒有不小心把密鑰寫進去。
+其他可用技能：
+  🐛 遇到 bug？跟我說「幫我 debug」
+  🔍 想審查程式碼？跟我說「幫我 code review」
+  🚀 要開新專案？跟我說「幫我建立新專案」
+```
+
+---
+
+## 方法三：手動安裝
+
+使用者也可以完全手動操作：
+
+```bash
+# 1. 下載專案
+git clone https://github.com/chihao919/tip.git
+
+# 2. 安裝所有技能（一次性）
+mkdir -p ~/.claude/skills
+cp tip/skills/*.md ~/.claude/skills/
+
+# 3. 複製 CLAUDE.md 到你的專案
+cp tip/CLAUDE.md your-project/
+```
+
+---
+
+## 更新已安裝的 Skills
+
+重新執行一鍵安裝指令即可更新：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/chihao919/tip/main/install.sh | bash
+```
+
+或手動更新：
+
+```bash
+git -C tip pull
+cp tip/skills/*.md ~/.claude/skills/
 ```
 
 ---

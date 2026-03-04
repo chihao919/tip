@@ -209,7 +209,17 @@ These rules apply to ALL coding activities throughout the project lifecycle.
 - Offer to explain complex logic step by step
 - When adding a new dependency, explain what it does and why it is needed
 
-### 2.8 Dependency Management
+### 2.8 Available Skills
+
+The following skills are installed and available for use:
+
+- **vibe-coding-workflow** — 6-step development workflow (Plan → Test → Implement → Review → Refactor → Merge). Use when building new features.
+- **security-check** — Pre-push security scanner. Run before every `git push`.
+- **debugging-guide** — Systematic 5-step debugging method. Use when encountering bugs instead of randomly trying fixes.
+- **code-review** — Self code review with 5-point checklist. Use after completing a feature to catch potential issues.
+- **project-kickoff** — Project quick start guide. Use when starting a brand new project to scaffold structure and plan.
+
+### 2.9 Dependency Management
 
 - Only add dependencies that are genuinely needed
 - Verify that packages actually exist and are actively maintained before installing
