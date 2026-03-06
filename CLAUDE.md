@@ -213,7 +213,7 @@ These rules apply to ALL coding activities throughout the project lifecycle.
 
 The following skills are installed and available for use:
 
-- **vibe-coding-workflow** — 6-step development workflow (Plan → Test → Implement → Review → Refactor → Merge). Use when building new features.
+- **vibe-coding-workflow** — 7-step development workflow (Plan → Behavior Specs → Test → Implement → Review → Refactor → Merge). Use when building new features.
 - **security-check** — Pre-push security scanner. Run before every `git push`.
 - **debugging-guide** — Systematic 5-step debugging method. Use when encountering bugs instead of randomly trying fixes.
 - **code-review** — Self code review with 5-point checklist. Use after completing a feature to catch potential issues.

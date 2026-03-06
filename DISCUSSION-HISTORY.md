@@ -154,7 +154,7 @@ MIT 授權。
    - Replit agent 刪除了生產環境資料庫
    - 產業轉向：「vibe coding」→「context engineering」
 
-### 第三版：合併步驟，從 8 步變成 6 步
+### 第三版：合併步驟，從 8 步變成 6 步（後來又加到 7 步）
 
 **合併原因：** Plan Mode 讓「定義需求」和「規劃」變成連續的過程，不需要分開。
 
@@ -319,6 +319,41 @@ Step 4（審核）、Step 5（重構）、Step 6（合併）
 - 用 💡 標記，讓想跳過的人可以跳
 - 解釋 CLAUDE.md 規則（AI 口頭約定）vs Hooks（寫死的自動化）的差別
 - 提供 Node.js 和 Python 兩種設定範例
+
+---
+
+### 第六版：加入 BDD 行為描述步驟（6 步 → 7 步）
+
+**起因：** Steven 提到軟體工程有三層——Spec（高階需求）、BDD（行為描述）、
+Unit Test（單元測試），認為人跟 AI 合作也是團隊，BDD 的「共同語言」概念
+對 Vibe Coding 同樣有價值。
+
+**核心洞察：**
+- 人跟 AI 合作 = 團隊合作（你是產品經理，AI 是工程師）
+- BDD 的 Given-When-Then 格式 = 人跟 AI 之間的「合約」
+- 合約用白話寫，人看得懂、AI 也看得懂
+- 有合約在手，出錯時可以追溯是「需求沒想清楚」還是「AI 做錯了」
+
+**具體改動：**
+
+1. **vibe-coding-survival-guide.md**
+   - 在 Step 1（規劃）和原 Step 2（測試）之間插入新的 Step 2（行為描述）
+   - 全部步驟重新編號：6 步 → 7 步
+   - Step 2 用 Mosky 風格撰寫（先做再說 → ☕ 解釋 → 看結果）
+   - 用「老闆跟員工之間的合約」比喻解釋 BDD
+
+2. **skills/vibe-coding-workflow.md**
+   - 新增 Step 2: Behavior Specs 段落
+   - 全部步驟重新編號
+   - Step 7 的下一輪引用更新為 Step 2
+
+3. **全域更新**
+   - README.md、INSTALL.md、CLAUDE.md 中的「6 步驟」全部更新為「7 步驟」
+   - 流程描述更新為：規劃 → 行為描述 → 測試 → 實作 → 審查 → 重構 → 合併
+
+**為什麼不做成獨立 Skill：**
+Steven 決定直接整合進現有流程，而不是做成新的 skill。
+原因是 BDD 不是獨立的工具，而是開發流程中的一個環節。
 
 ---
 

@@ -62,7 +62,7 @@ cp tip/CLAUDE.md your-project/
 | 檔案 | 說明 | 適合誰 |
 |------|------|--------|
 | [guide-for-beginners.md](./guide-for-beginners.md) | 入門指南：用白話解釋程式開發的基本概念 | 完全的程式小白 |
-| [vibe-coding-survival-guide.md](./vibe-coding-survival-guide.md) | Vibe Coding 生存指南：6 步驟開發流程 + Plan Mode | 準備開始寫程式的人 |
+| [vibe-coding-survival-guide.md](./vibe-coding-survival-guide.md) | Vibe Coding 生存指南：7 步驟開發流程 + Plan Mode | 準備開始寫程式的人 |
 | [CLAUDE.md](./CLAUDE.md) | 放進專案就自動生效的 AI 行為規則 | 所有使用 Claude Code 的人 |
 | [FAQ.md](./FAQ.md) | 常見問題：新手最常問的 9 個問題 | 有疑問的人 |
 | [troubleshooting.md](./troubleshooting.md) | 故障排除：遇到問題怎麼解決 | 碰到問題的人 |
@@ -73,7 +73,7 @@ Skills 是 Claude Code 的「專業技能」，安裝後可以用 `/skill-name` 
 
 | 技能 | 說明 | 觸發方式 |
 |------|------|----------|
-| [vibe-coding-workflow](./skills/vibe-coding-workflow.md) | 6 步驟開發流程：規劃 → 測試 → 實作 → 審查 → 重構 → 合併 | 開發新功能時自動使用 |
+| [vibe-coding-workflow](./skills/vibe-coding-workflow.md) | 7 步驟開發流程：規劃 → 行為描述 → 測試 → 實作 → 審查 → 重構 → 合併 | 開發新功能時自動使用 |
 | [security-check](./skills/security-check.md) | 推送前安全掃描：檢查有沒有不小心把密鑰寫進程式碼 | `git push` 前自動觸發 |
 | [debugging-guide](./skills/debugging-guide.md) | 系統化除錯指南：5 步除錯法，不再瞎猜亂改 | 遇到 bug 時使用 |
 | [code-review](./skills/code-review.md) | 自我程式碼審查：5 點檢查清單，幫你抓出潛在問題 | 完成功能後使用 |
@@ -89,7 +89,7 @@ Skills 是 Claude Code 的「專業技能」，安裝後可以用 `/skill-name` 
 - ✅ 驗證整個安全設定
 
 **Skills 提供的能力：**
-- 📋 6 步驟流程開發功能
+- 📋 7 步驟流程開發功能
 - 🔒 推送前自動檢查密鑰洩漏
 - 🐛 系統化除錯，不再瞎猜
 - 🔍 自動程式碼審查

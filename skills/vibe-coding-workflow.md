@@ -3,13 +3,13 @@ name: vibe-coding-workflow
 description: >
   Development workflow for building features. Use when the user wants to
   build something new, add a feature, fix a bug, start a project, or plan
-  implementation. Covers planning, testing, implementation, review,
-  refactoring, and merging.
+  implementation. Covers planning, behavior specs, testing, implementation,
+  review, refactoring, and merging.
 ---
 
 # Vibe Coding Development Workflow
 
-This skill defines a 6-step development workflow. Follow these steps in order.
+This skill defines a 7-step development workflow. Follow these steps in order.
 
 ## Step 1: Plan (Always start here for new features)
 
@@ -54,49 +54,88 @@ This skill defines a 6-step development workflow. Follow these steps in order.
 
 5. Wait for the user to approve the plan before proceeding.
 
-## Step 2: Generate Tests
+## Step 2: Behavior Specs (BDD — the contract between you and the user)
 
-Before writing any feature code, generate tests first.
+Translate the approved plan into behavior descriptions using Given-When-Then format.
+This is the bridge between what the user wants and what you will build.
+
+1. Tell the user what you're about to do:
+   "I'm going to list out what the system should do in plain language.
+   Each scenario describes one specific behavior — please check if these
+   match what you have in mind."
+
+2. Write behavior specs in Given-When-Then format:
+   ```
+   Scenario: <descriptive name>
+     Given <initial context>
+     When  <action or event>
+     Then  <expected outcome>
+     And   <additional outcome if needed>
+   ```
+
+3. Cover both happy paths and error scenarios:
+   - Normal usage (the main thing the feature does)
+   - Edge cases (empty input, invalid data, boundary values)
+   - Error scenarios (network failure, permission denied, timeout)
+
+4. Present the specs to the user and ask them to review:
+   - Are there scenarios that are wrong or unwanted?
+   - Are there scenarios that are missing?
+   - The user can read these because they are plain language, not code.
+
+5. Get user approval before proceeding. This is your shared contract —
+   all tests and implementation will be based on these specs.
+
+**Skip this step** if the feature is trivial (e.g., changing a label, adjusting
+a color). But for any feature with multiple scenarios or error handling,
+behavior specs save significant rework later.
+
+## Step 3: Generate Tests
+
+Based on the behavior specs from Step 2, generate tests.
 
 1. Tell the user what you're about to do and why:
-   "Before I start building, I'm going to write tests first — these are
-   automated checks that verify the feature works correctly. Think of it
-   like writing a checklist before building IKEA furniture."
+   "Now I'm going to turn those behavior descriptions into automated tests.
+   Each scenario you approved will become a test — so the code must satisfy
+   every behavior we agreed on."
 
-2. Write tests that cover:
+2. Write tests that map directly to the behavior specs:
+   - Each Scenario from Step 2 should have a corresponding test
    - Happy paths (normal usage)
    - Edge cases (empty, invalid, extreme values, failures)
 
-3. Test names must be human-readable:
+3. Test names must be human-readable and match the scenario names:
    Good: "user sets a past time → should show error"
    Bad: "test_case_1"
 
 4. After generating tests, briefly explain to the user what each test checks.
-   They don't need to read the code — just the test names and what they mean.
+   They can cross-reference with the behavior specs from Step 2.
 
 5. Run all tests once to confirm they fail
    (features not built yet — this is expected). Tell the user this is normal.
 
-## Step 3: Implement
+## Step 4: Implement
 
 1. Tell the user you're starting:
-   "Plan approved. I'm going to start building now. I'll work through it
-   one piece at a time — you can watch the progress in the bottom left."
+   "Plan approved, behaviors defined, tests ready. I'm going to start
+   building now. I'll work through it one piece at a time."
 
-2. Follow the approved plan from Step 1.
+2. Follow the approved plan from Step 1, guided by the behavior specs from Step 2.
    - Work through the plan one sub-feature at a time
    - After completing each sub-feature: run tests, commit if all pass
    - If a test fails: attempt to fix it
    - If it fails 2-3 times: STOP. Ask the user:
-     "This part keeps failing. Let's revisit the plan for this section."
-     (Usually the plan was unclear here — clarify, then resume)
+     "This part keeps failing. Let's revisit the behavior spec for this scenario."
+     Check if the spec itself was wrong, or if the implementation approach needs changing.
    - Continue until all sub-features are done and all tests pass
 
-## Step 4: Review
+## Step 5: Review
 
 All tests pass. Now explain what you built.
 
-1. Explain in plain language what you did and why.
+1. Cross-reference with Step 2's behavior specs:
+   Walk through each scenario and confirm it is satisfied.
+   Explain in plain language what you did and why.
    The user doesn't need to read code — they need to understand your explanation.
    Include: how you handled edge cases and what happens when things go wrong.
    If your explanation doesn't match what they wanted, stop and re-plan.
@@ -114,7 +153,7 @@ All tests pass. Now explain what you built.
 4. If the user finds the direction is wrong:
    Do NOT patch directly. Go back to Plan Mode and re-plan first.
 
-## Step 5: Refactor
+## Step 6: Refactor
 
 1. Tell the user you're entering the cleanup phase:
    "Feature is done and verified. Now I'm going to check if the code
@@ -161,7 +200,7 @@ Skip this step if the change was small (text edits, color changes).
 But if a whole new feature was added, always refactor — it makes the next
 feature easier to build.
 
-## Step 6: Merge
+## Step 7: Merge
 
 1. Before pushing, run the `security-check` skill to scan for leaked secrets.
    Only proceed if the security check passes.
@@ -170,7 +209,7 @@ feature easier to build.
    Format: `feat: <description>` or `fix: <description>`
 
 3. You just completed ONE feature from the plan.
-   (Step 3's sub-steps were the internal pieces of that one feature.)
+   (Step 4's sub-steps were the internal pieces of that one feature.)
 
 4. Check what to do next:
    - If PLAN.md exists: read it to find the next feature

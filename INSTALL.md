@@ -49,7 +49,7 @@ cp skills/*.md ~/.claude/skills/
 After copying, confirm to the user:
 ```
 ✅ 已安裝以下技能：
-  - vibe-coding-workflow（6 步驟開發流程）
+  - vibe-coding-workflow（7 步驟開發流程）
   - security-check（推送前安全檢查）
   - debugging-guide（系統化除錯指南）
   - code-review（自我程式碼審查）
@@ -151,7 +151,7 @@ Then report to the user in this format:
 ✅ 安裝完成！
 
 已安裝的技能：
-  ✅ vibe-coding-workflow（6 步驟開發流程）
+  ✅ vibe-coding-workflow（7 步驟開發流程）
   ✅ security-check（推送前安全檢查）
   ✅ debugging-guide（系統化除錯指南）
   ✅ code-review（自我程式碼審查）
@@ -169,8 +169,8 @@ Then report to the user in this format:
 當你想要開發新功能時，只要跟我說：
 「我想要做 XXX 功能」
 
-我會自動用 6 步驟流程帶你完成：
-1. 規劃 → 2. 寫測試 → 3. 實作 → 4. 審查 → 5. 重構 → 6. 合併
+我會自動用 7 步驟流程帶你完成：
+1. 規劃 → 2. 行為描述 → 3. 寫測試 → 4. 實作 → 5. 審查 → 6. 重構 → 7. 合併
 
 其他可用技能：
   🐛 遇到 bug？跟我說「幫我 debug」
