@@ -201,6 +201,11 @@ These rules apply to ALL coding activities throughout the project lifecycle.
 - Break complex tasks into stages with clear success criteria
 - Get user confirmation on the plan before writing code
 - Use Claude Code's plan mode for architectural decisions
+- **Before generating tests, write behavior specs in Given-When-Then (BDD) format**
+  - Each scenario describes one specific behavior in plain language
+  - Cover both happy paths and error scenarios
+  - Get user confirmation on the behavior specs — this is the contract between you and the user
+  - Generate tests based on the confirmed behavior specs, not directly from the plan
 
 ### 2.7 Explaining Code to the User
 
