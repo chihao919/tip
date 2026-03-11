@@ -116,12 +116,21 @@ Based on the behavior specs from Step 2, generate tests.
 
 ## Step 4: Implement
 
-1. Tell the user you're starting:
+1. **Before writing code that calls external APIs**, fetch the latest docs first.
+   If `chub` CLI is available (npm install -g @aisuite/chub), use it:
+   ```bash
+   chub search "<api name>"
+   chub get <id> --lang py    # or --lang js
+   ```
+   If chub is not available, search for the official API documentation.
+   Do NOT rely on training data for API shapes — APIs change frequently.
+
+2. Tell the user you're starting:
    "Plan approved, behaviors defined, tests ready. I'm going to start
    building now. I'll work through it one piece at a time."
 
-2. Follow the approved plan from Step 1, guided by the behavior specs from Step 2.
-   - Work through the plan one sub-feature at a time
+3. Follow the approved plan from Step 1, guided by the behavior specs from Step 2.
+4. Work through the plan one sub-feature at a time
    - After completing each sub-feature: run tests, commit if all pass
    - If a test fails: attempt to fix it
    - If it fails 2-3 times: STOP. Ask the user:

@@ -104,6 +104,14 @@ Skills 是 Claude Code 的「專業技能」，安裝後可以用 `/skill-name` 
 
 ---
 
+## 推薦搭配工具
+
+| 工具 | 說明 | 安裝 |
+|------|------|------|
+| [Context Hub (chub)](https://github.com/andrewyng/context-hub) | AI 寫程式前先查最新 API 文件，避免用過時的 API | `npm install -g @aisuite/chub` |
+
+---
+
 ## 其他資源
 
 | 檔案 | 說明 |
@@ -116,6 +124,7 @@ Skills 是 Claude Code 的「專業技能」，安裝後可以用 `/skill-name` 
 - [Claude Code](https://www.anthropic.com/claude-code)（Pro、Max、Team 或 Enterprise 方案）
 - 終端機 / 命令列
 - Git
+- （可選）[Context Hub](https://github.com/andrewyng/context-hub)：`npm install -g @aisuite/chub`
 
 ## Contributing
 

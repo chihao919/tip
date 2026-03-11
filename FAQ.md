@@ -247,4 +247,34 @@ cp ./skills/your-skill.md ~/.claude/skills/your-skill.md
 
 ---
 
+## Q10. AI 寫的 API 呼叫不對怎麼辦？
+
+AI 的訓練資料有截止日期。如果 API 在那之後改版了，AI 就會寫出「看起來對但其實已經過時」的程式碼。
+
+### 解法：用 Context Hub (chub) 抓最新文件
+
+[Context Hub](https://github.com/andrewyng/context-hub) 是一個開源工具，讓 AI 在寫程式前先查最新的官方 API 文件，而不是靠記憶猜。
+
+```bash
+# 安裝（一次性）
+npm install -g @aisuite/chub
+
+# 搜尋你要用的 API
+chub search "stripe"
+
+# 抓最新文件給 AI 看
+chub get stripe/api --lang js
+```
+
+支援 60+ 種 API（OpenAI、Stripe、Firebase、Supabase、Vercel 等等）。
+
+### 沒裝 chub 也可以
+
+跟 AI 說：「去查一下這個 API 的官方文件再寫。」
+AI 會自己去搜尋，但 chub 的文件是社群維護的，通常更精準。
+
+> 黃金原則：AI 用外部 API 之前，先查文件，不要靠訓練資料猜。
+
+---
+
 > 還有其他問題？歡迎到 [GitHub Issues](https://github.com/chihao919/tip/issues) 提問，或是直接問 Claude Code — 它應該能回答大部分關於自己的問題 😄

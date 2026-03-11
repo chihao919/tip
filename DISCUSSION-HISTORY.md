@@ -355,6 +355,28 @@ Unit Test（單元測試），認為人跟 AI 合作也是團隊，BDD 的「共
 Steven 決定直接整合進現有流程，而不是做成新的 skill。
 原因是 BDD 不是獨立的工具，而是開發流程中的一個環節。
 
+### 整合 Context Hub (chub) — 解決 AI 幻覺 API 問題
+
+**起因：** 研究了 Andrew Ng 團隊的 [Context Hub](https://github.com/andrewyng/context-hub)
+專案，發現它解決了一個 TIP 流程中的重要缺口：AI 在寫外部 API 呼叫時，可能
+使用過時的 API 用法（因為訓練資料有截止日期）。
+
+**Context Hub 的核心價值：**
+- CLI 工具（chub），讓 agent 在寫程式前先抓最新的官方 API 文件
+- 支援 60+ 種 API（OpenAI、Stripe、Firebase、Supabase 等）
+- Annotations 機制：agent 可以留筆記給未來的自己，跨 session 保留
+- 文件是社群維護的，比 AI 自己搜尋更精準
+
+**整合方式：**
+1. vibe-coding-survival-guide.md Step 4 加入 chub 提醒
+2. vibe-coding-workflow skill Step 4 加入查文件步驟
+3. FAQ 新增 Q10：AI 寫的 API 呼叫不對怎麼辦
+4. README 加入推薦工具段落
+
+**為什麼不做成獨立 Skill：**
+chub 本身已經有自己的 get-api-docs skill（格式跟 TIP 的 skill 一模一樣）。
+TIP 不需要重新造輪子，只需要在流程中提醒使用者：「用到外部 API 時，先查文件」。
+
 ---
 
 ## 待辦事項

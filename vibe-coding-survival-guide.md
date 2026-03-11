@@ -406,6 +406,22 @@ Step 4: 讓 AI 開始寫功能（當慣老闆，看著它做）
 
   跟 AI 說：「根據計畫和行為描述，開始寫功能。」
 
+  ⚠️ 如果功能會用到外部 API（例如 OpenAI、Stripe、LINE），
+  先跟 AI 說：「用 chub 查一下這個 API 的最新文件再開始寫。」
+
+  為什麼？因為 AI 的訓練資料有截止日期，它記得的 API 用法
+  可能已經過時了。chub 會抓最新的官方文件，讓 AI 照著寫，
+  而不是靠記憶猜。（需要先安裝：npm install -g @aisuite/chub）
+
+  ```bash
+  chub search "stripe"              # 找文件
+  chub get stripe/api --lang js     # 抓最新文件
+  ```
+
+  💡 沒有安裝 chub 也沒關係，你也可以直接跟 AI 說：
+  「去查一下這個 API 的官方文件再寫」——但 chub 更可靠，
+  因為它的文件是社群維護的，比 AI 自己去搜尋更精準。
+
   Claude Code 會自己把計畫拆成好幾個小步驟，然後一步一步做。
   你不需要告訴它怎麼拆——Step 1 的計畫和 Step 2 的行為描述
   已經給了它清楚的方向，它會照著順序執行。
