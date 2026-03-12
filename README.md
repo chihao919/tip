@@ -110,6 +110,13 @@ Skills 是 Claude Code 的「專業技能」，安裝後可以用 `/skill-name` 
 |------|------|------|
 | [Context Hub (chub)](https://github.com/andrewyng/context-hub) | AI 寫程式前先查最新 API 文件，避免用過時的 API | `npm install -g @aisuite/chub` |
 
+## 參考資源
+
+| 資源 | 說明 |
+|------|------|
+| [Everything Claude Code](https://github.com/affaan-m/everything-claude-code) | 最完整的 Claude Code 配置生態系統（50K+ stars）。包含 16 個 agent、65+ skills、40 commands、hooks 自動化、安全指南、token 優化策略。TIP 適合入門，ECC 適合進階。 |
+| [Context Hub](https://github.com/andrewyng/context-hub) | Andrew Ng 團隊的 API 文件管理工具。讓 AI 在寫程式前先查最新文件，解決訓練資料過時的問題。 |
+
 ---
 
 ## 其他資源
